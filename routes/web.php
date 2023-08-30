@@ -25,5 +25,7 @@ Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHom
 
 Route::post('/create/event', [EventController::class, 'store']);
 Route::get('/event/list', [EventController::class, 'show']);
+Route::get('/edit/{post}', [EventController::class, 'edit']);
+Route::put('/edit/{post}', [EventController::class, 'update']);
 
 

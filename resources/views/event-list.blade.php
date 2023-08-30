@@ -18,7 +18,7 @@
                         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
                                
                             <li class="nav-item">
-                                    <a class="nav-link collapsed" href="/dashboard/user" data-toggle="collapse" data-target="#collapseTwo"
+                                    <a class="nav-link collapsed" href="/admin/home" data-toggle="collapse" data-target="#collapseTwo"
                                         aria-expanded="true" aria-controls="collapseTwo">
                                         <span>EVENT DATA</span>
                                     </a>
@@ -79,10 +79,10 @@
                                                 @endforeach
                                             </tbody>
                                       </table>
+                                 </div>
                             </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                      </div>
+                 </div>
+             </div>
 </div>
 @endsection
