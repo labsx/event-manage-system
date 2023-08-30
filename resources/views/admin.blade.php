@@ -20,10 +20,7 @@
                                 <div class="sidebar-brand-icon rotate-n-15">
                                     <i class="fas fa-laugh-wink"></i>
                                 </div>
-                               
                             </a>
-                            
-                            <hr class="sidebar-divider">
                                 <li class="nav-item">
                                         <a class="nav-link collapsed" href="/admin/home" data-toggle="collapse" data-target="#collapseTwo"
                                             aria-expanded="true" aria-controls="collapseTwo">

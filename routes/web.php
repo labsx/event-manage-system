@@ -14,15 +14,12 @@ use App\Http\Controllers\EventController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
+Route::get('/', [EventController::class, 'welcome']);
 Route::post('/create/event', [EventController::class, 'store']);
 Route::get('/event/list', [EventController::class, 'show']);
 Route::get('/edit/{post}', [EventController::class, 'edit']);
