@@ -28,4 +28,5 @@ Route::put('/edit/{post}', [EventController::class, 'update']);
 
 Route::get('/participant', [ParticipantController::class, 'view']);
 Route::post('/participant', [ParticipantController::class, 'add']);
+Route::get('/participant/list', [ParticipantController::class, 'list']);
 

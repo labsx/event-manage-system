@@ -38,4 +38,11 @@ class ParticipantController extends Controller
     
         return back()->with('message', 'Participant registration success!.');
     }   
+
+    public function list()
+    {
+        return view('participants.participants-list', [
+            'posts' => Participant::latest()->filter(request([ 'search']))->paginate(6)
+        ]);
+    }
 }
