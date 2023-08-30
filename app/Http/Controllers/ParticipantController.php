@@ -45,4 +45,11 @@ class ParticipantController extends Controller
             'posts' => Participant::latest()->filter(request([ 'search']))->paginate(6)
         ]);
     }
+
+    public function delete(Participant $post)
+    {
+            $post->delete();
+            
+            return back()->with('message', 'Deleted Successfully');
+    }
 }
