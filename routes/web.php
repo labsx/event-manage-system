@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ParticipantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,6 @@ Route::get('/event/list', [EventController::class, 'show']);
 Route::get('/edit/{post}', [EventController::class, 'edit']);
 Route::put('/edit/{post}', [EventController::class, 'update']);
 
+Route::get('/participant', [ParticipantController::class, 'view']);
+Route::post('/participant', [ParticipantController::class, 'add']);
 
