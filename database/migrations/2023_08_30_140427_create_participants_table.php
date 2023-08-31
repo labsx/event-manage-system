@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('participants', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->bigInteger('user_id')->constrained()
+                ->onDelete('cascade');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('event');

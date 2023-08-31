@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ParticipantController;
+use App\Models\Participant;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,4 @@ Route::put('/participant', [ParticipantController::class, 'add']);
 Route::get('/participant/list', [ParticipantController::class, 'list']);
 Route::delete('/destroy/{post}', [ParticipantController::class, 'delete']);
 Route::delete('/cancel/{post}', [ParticipantController::class, 'cancel']);
-
+Route::get('/event/registered', [ParticipantController::class, 'event']);

@@ -11,8 +11,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <p><a href="/home">Back</a> <a href="/calcel/event" class="ml-2">Event Register</a></p>
-       
+
+                    <div>
+                        <a href="/home">Back</a>
+                        <a href="/event/registered" >event list</a>
+                    </div>
                      <div class="homepage-info-section mt-5">
                             <div class="container">
                                 <div class="row">
@@ -25,6 +28,16 @@
                                             <form action="/participant" method="POST">
                                                 @csrf
                                                 @method ('PUT')
+
+                                                <div class="form-group">
+                                                    <label class="">id</label>
+                                                   
+                                                    <input type="text" class="form-control" name="id" placeholder="Full Name" value="{{ Auth::user()->id }}" readonly>
+                                                        @error('id')
+                                                            <p class="text-danger text-xs mt-2">{{$message}}</p>
+                                                        @enderror
+                                                </div>
+
                                                 <div class="form-group">
                                                     <label class="">Participant Name</label>
                                                     <input type="text" class="form-control" name="name" placeholder="Full Name" value="{{ Auth::user()->name }}" readonly>
@@ -46,35 +59,11 @@
                                                                 <option value="{{$event->name}}">{{$event->name }}</option>
                                                             @endforeach
                                                     </select>
-
                                                     <footer class="entry-footer">
                                                         <button type="submit" class="btn gradient-bg mt-4">Register Now</button>
                                                     </footer>
                                                 </div>
                                             </form>
-
-                                            <table class="table">
-                                                <thead>
-                                                  <tr>
-                                                    <th scope="col">Registered Event</th>
-                                                    <th scope="col">Handle</th>
-                                                  </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach ($posts as $post)
-                                                  <tr>
-                                                    <td>{{$post->event}}</td>
-                                                    <td>
-                                                        <form action="/cancel/{{$post->id}}" method="POST" class="mt-1">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm mt-0" >Delete</button>
-                                                        </form>
-                                                    </td>
-                                                  </tr>
-                                                </tbody>
-                                                @endforeach
-                                              </table>
 
                                             <div class=" ">
                                                 @if (session()->has('message'))

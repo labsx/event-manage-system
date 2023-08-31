@@ -45,9 +45,7 @@
                             <div id="content">
                                 <nav class=" mb-4">
                                   <div>
-                                  
                                   </div>
-                    
                                  <div class="row">
                                     <table class="table table-bordered ml-3 mr-3">
                                         <thead>

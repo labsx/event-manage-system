@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Event;
 use App\Models\Participant;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class ParticipantController extends Controller
 {
     public function view()
     {
-
         $events = Event::all();
-        $posts = Participant::all();
+        $users = Participant::all();
 
-        return view ('participants.register-event', ['events' => $events], ['posts' => $posts]);
+        return view ('participants.register-event', ['events' => $events], ['users' => $users]);
     }
 
     public function add(Request $request)
@@ -35,6 +35,7 @@ class ParticipantController extends Controller
         ]);
  
         Participant::create([
+            'user_id' => $request->input('id'),
             'email' => $request->input('email'),
             'name' => $request->input('name'),
             'event' => $request->input('event')
@@ -63,4 +64,13 @@ class ParticipantController extends Controller
             
             return back()->with('message', 'Cancel Successfully');
     }
+
+    public function event()
+    {
+        $user = Auth::user();
+        $posts = $user->posts;
+
+        return view('participant-event-registration', ['posts' => $posts]);
+    }
+
 }

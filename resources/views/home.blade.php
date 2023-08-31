@@ -10,9 +10,8 @@
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
-                       
                     @endif
-            
+
                         <div class="max-w-7xl mx-auto p-6 lg:p-8">
                             <div class="flex justify-center">
                                 <a href="/participant">Register to event</a>
