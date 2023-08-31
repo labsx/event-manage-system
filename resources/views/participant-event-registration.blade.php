@@ -11,8 +11,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-            
+                        <div>
+                            <a href="/participant">Back</a>
+                        </div>
                         <table class="table">
+                           
                             <thead>
                                 <tr>
                                     <th scope="col">Name</th>
@@ -21,6 +24,7 @@
                                 </tr>
                             </thead>
                                     <tbody>
+                                        @unless ($posts->isEmpty())
                                         @foreach ($posts as $post)
                                             <tr>
                                                 <td>{{$post->name}}</td>
@@ -33,9 +37,16 @@
                                                     </form>
                                                 </td>
                                             </tr>
-                                    </tbody>
-                                        @endforeach
-                        </table> 
+                                            @endforeach
+                                            @else
+                                            <tr>
+                                                <td>
+                                                    <p>No event register!.</p>
+                                                </td>
+                                            </tr>
+                                            @endunless
+                                    </tbody>           
+                         </table> 
                                     </div>
                                 </div>
                             </div>
