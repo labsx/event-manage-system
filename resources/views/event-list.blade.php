@@ -25,7 +25,7 @@
                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">    
                              </li>  
                              <li class="nav-item">
-                                <a class="nav-link collapsed" href="/create/event" data-toggle="collapse" data-target="#collapseTwo"
+                                <a class="nav-link collapsed" href="/event/list" data-toggle="collapse" data-target="#collapseTwo"
                                     aria-expanded="true" aria-controls="collapseTwo">
                                     <span>ADD EVENT</span>
                                 </a>
@@ -66,12 +66,12 @@
                                                         <td>{{ $post->name }}</td>
                                                         <td>{{ $post->venue }}</td>
                                                         <td>{{ $post->description }} </td>
-                                                        <td> <a class="btn btn-primary btn-sm col-5 mt-0" 
+                                                        <td> <a class="btn btn-primary btn-sm mt-0" 
                                                             href="/edit/{{$post->id}}" role="button">Edit</a>
                                                             <form action="/delete/{{$post->id}}/data" method="POST" class="mt-1">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="btn btn-danger btn-sm col-5 mt-0" >Delete</button>
+                                                                <button type="submit" class="btn btn-danger btn-sm mt-0" >Delete</button>
                                                             </form>
                                                         </td>
                                                        

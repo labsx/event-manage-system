@@ -11,7 +11,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <p><a href="/home">Back</a></p>
+                    <p><a href="/home">Back</a> <a href="/calcel/event" class="ml-2">Event Register</a></p>
+       
                      <div class="homepage-info-section mt-5">
                             <div class="container">
                                 <div class="row">
@@ -23,16 +24,17 @@
                                         <div class="entry-content mt-1">
                                             <form action="/participant" method="POST">
                                                 @csrf
+                                                @method ('PUT')
                                                 <div class="form-group">
                                                     <label class="">Participant Name</label>
-                                                    <input type="text" class="form-control" name="name" placeholder="Full Name" >
+                                                    <input type="text" class="form-control" name="name" placeholder="Full Name" value="{{ Auth::user()->name }}" readonly>
                                                         @error('name')
                                                             <p class="text-danger text-xs mt-2">{{$message}}</p>
                                                         @enderror
                                                 </div>
 
                                                 <label>Email</label>
-                                                    <input type="email" class="form-control" name="email" placeholder="Email">
+                                                    <input type="email" class="form-control" name="email" placeholder="Email" value="{{ Auth::user()->email}} " readonly>
                                                         @error('email')
                                                             <p class="text-danger text-xs mt-2">{{$message}}</p>
                                                         @enderror
@@ -50,6 +52,29 @@
                                                     </footer>
                                                 </div>
                                             </form>
+
+                                            <table class="table">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col">Registered Event</th>
+                                                    <th scope="col">Handle</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach ($posts as $post)
+                                                  <tr>
+                                                    <td>{{$post->event}}</td>
+                                                    <td>
+                                                        <form action="/cancel/{{$post->id}}" method="POST" class="mt-1">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm mt-0" >Delete</button>
+                                                        </form>
+                                                    </td>
+                                                  </tr>
+                                                </tbody>
+                                                @endforeach
+                                              </table>
 
                                             <div class=" ">
                                                 @if (session()->has('message'))

@@ -25,9 +25,11 @@ Route::post('/create/event', [EventController::class, 'store']);
 Route::get('/event/list', [EventController::class, 'show']);
 Route::get('/edit/{post}', [EventController::class, 'edit']);
 Route::put('/edit/{post}', [EventController::class, 'update']);
+Route::delete('/delete/{post}/data', [EventController::class, 'delete']);
 
 Route::get('/participant', [ParticipantController::class, 'view']);
-Route::post('/participant', [ParticipantController::class, 'add']);
+Route::put('/participant', [ParticipantController::class, 'add']);
 Route::get('/participant/list', [ParticipantController::class, 'list']);
 Route::delete('/destroy/{post}', [ParticipantController::class, 'delete']);
+Route::delete('/cancel/{post}', [ParticipantController::class, 'cancel']);
 

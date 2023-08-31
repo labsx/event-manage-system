@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Participant;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -11,9 +12,11 @@ class ParticipantController extends Controller
 {
     public function view()
     {
-        $events = Event::all();
 
-        return view ('participants.register-event', ['events' => $events]);
+        $events = Event::all();
+        $posts = Participant::all();
+
+        return view ('participants.register-event', ['events' => $events], ['posts' => $posts]);
     }
 
     public function add(Request $request)
@@ -21,6 +24,7 @@ class ParticipantController extends Controller
         $maxUsers = 3;
         $this->validate($request, [
             'email' => ['required','email',
+            
         Rule::unique('participants'),
             function ($attribute, $value, $fail) use ($maxUsers) {
                 if (Participant::count() >= $maxUsers) {
@@ -51,5 +55,12 @@ class ParticipantController extends Controller
             $post->delete();
             
             return back()->with('message', 'Deleted Successfully');
+    }
+
+    public function cancel(Participant $post)
+    {
+            $post->delete();
+            
+            return back()->with('message', 'Cancel Successfully');
     }
 }

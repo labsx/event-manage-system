@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('event');
             // $table->integer('count')->default(2);
             $table->timestamps();
+     
         });
     }
 

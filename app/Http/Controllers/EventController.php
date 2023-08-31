@@ -68,4 +68,11 @@ class EventController extends Controller
         return back()
             ->with('message', 'Event data successfully edited!');
     }
+
+    public function delete(Event $post)
+    {
+        $post->delete();
+        
+        return back()->with('message', 'Deleted Successfully');
+    }
 }
