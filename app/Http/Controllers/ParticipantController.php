@@ -14,11 +14,19 @@ class ParticipantController extends Controller
 {
     public function index(Request $request)
     {
-        return view('home', [
-            'posts' => Event::latest()
-            ->where('name', $request->get('search'))
-            ->paginate(4)
-        ]); 
+        $query = $request->input('search');
+        
+        $queryBuilder = Event::query();
+
+        if ($query) {
+            $queryBuilder->where('name', 'like', '%' . $query . '%')
+                ->orWhere('venue', 'like','%'. request('search'). '%')
+                ->orWhere('description', 'like','%'. request('search'). '%');
+        }
+
+        $posts = $queryBuilder->paginate(4);
+
+        return view('home', compact('posts'));
     }
 
     public function view()
@@ -64,11 +72,19 @@ class ParticipantController extends Controller
 
     public function list(Request $request)
     {
-        return view('participants.participants-list', [
-            'posts' => Event::latest()
-            ->where('name', $request->get('search'))
-            ->paginate(4)
-        ]); 
+        $query = $request->input('search');
+        
+        $queryBuilder = Participant::query();
+
+        if ($query) {
+            $queryBuilder->where('name', 'like', '%' . $query . '%')
+                ->orWhere('email', 'like','%'. request('search'). '%')
+                ->orWhere('event', 'like','%'. request('search'). '%');
+        }
+
+        $posts = $queryBuilder->paginate(5);
+
+        return view('participants.participants-list', compact('posts'));
     }
 
     public function delete(Participant $post)

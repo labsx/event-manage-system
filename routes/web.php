@@ -26,6 +26,7 @@ Route::get('/', [EventController::class, 'welcome'])->middleware('guest');
 Route::middleware(['middleware' => 'is_admin'])->group(function(){
     Route::get('/admin/home', [EventController::class, 'adminHome'])->name('admin.home');
     Route::post('/create/event', [EventController::class, 'store']);
+    // Route::get('/event/list', [EventController::class, 'show']);
     Route::get('/event/list', [EventController::class, 'show']);
     Route::get('/edit/{post}', [EventController::class, 'edit']);
     Route::put('/edit/{post}', [EventController::class, 'update']);

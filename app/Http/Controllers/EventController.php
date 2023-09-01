@@ -15,12 +15,26 @@ class EventController extends Controller
     }
      
     public function welcome(Request $request)
-    {   
-        return view('dashboard', [
-            'posts' => Event::latest()
-            ->where('name', $request->get('search'))
-            ->paginate(4)
-        ]); 
+    {    
+        $query = $request->input('search');
+        
+        $queryBuilder = Event::query();
+
+        if ($query) {
+            $queryBuilder->where('name', 'like', '%' . $query . '%')
+                ->orWhere('venue', 'like','%'. request('search'). '%')
+                ->orWhere('description', 'like','%'. request('search'). '%');
+        }
+
+        $posts = $queryBuilder->paginate(4);
+
+        return view('dashboard', compact('posts'));
+    
+        // return view('dashboard', [
+        //     'posts' => Event::latest()
+        //     ->where('name', $request->get('search'))
+        //     ->paginate(4)
+        // ]); 
     }
     
     public function store(Request $request)
