@@ -12,11 +12,13 @@ use App\Rules\UniqueIdEventCombination;
 
 class ParticipantController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         return view('home', [
-            'posts' => Event::latest()->filter(request([ 'search']))->paginate(3)
-        ]);
+            'posts' => Event::latest()
+            ->where('name', $request->get('search'))
+            ->paginate(4)
+        ]); 
     }
 
     public function view()
@@ -60,11 +62,13 @@ class ParticipantController extends Controller
         return back()->with('message', 'Event registration successfully');
     }
 
-    public function list()
+    public function list(Request $request)
     {
         return view('participants.participants-list', [
-            'posts' => Participant::latest()->filter(request([ 'search']))->paginate(4)
-        ]);
+            'posts' => Event::latest()
+            ->where('name', $request->get('search'))
+            ->paginate(4)
+        ]); 
     }
 
     public function delete(Participant $post)

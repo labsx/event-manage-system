@@ -14,11 +14,13 @@ class EventController extends Controller
         return view('admin');
     }
      
-    public function welcome()
-    {
+    public function welcome(Request $request)
+    {   
         return view('dashboard', [
-            'posts' => Event::latest()->filter(request([ 'search']))->paginate(4)
-        ]);
+            'posts' => Event::latest()
+            ->where('name', $request->get('search'))
+            ->paginate(4)
+        ]); 
     }
     
     public function store(Request $request)
@@ -26,8 +28,7 @@ class EventController extends Controller
         $formFields = $request->validate([
             'name' => ['required', Rule::unique('events', 'name')],
             'venue' => 'required',
-            'description' => 'required',
-           
+            'description' => 'required', 
         ]);
 
         if($request->hasFile('picture')){
