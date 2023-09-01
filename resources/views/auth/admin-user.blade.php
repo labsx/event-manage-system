@@ -29,44 +29,41 @@
                                   
                         <div class= "container bg-gray-50 border border-gray-200 rounded p-6 p-10 max-w-lg mx-auto mt-24" >
                                 <header class="text-center">
-                                    <h2 class="text-2xl font-bold uppercase mb-1 mt-4">CREATE EVENT</h2> 
+                                    <h2 class="text-2xl font-bold uppercase mb-1 mt-4">ADD USER</h2> 
                                 </header>
                                 
-                                <form action="/create/event" method="POST" enctype="multipart/form-data" class="py-4">
+                                <form action="/add/user" method="POST" class="py-4">
                                     @csrf
                                     <div class="form-group">
                                       <label >Event Name</label>
-                                          <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder="Enter event name" value="{{old('name')}}">
+                                          <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder="Name" value="{{old('name')}}">
                                             @error('name')
                                                 <p class="text-danger text-xs mt-2">{{$message}}</p>
                                             @enderror
                                     </div>
                 
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Event Venue</label>
-                                        <input type="text" class="form-control" name="venue"  aria-describedby="emailHelp" placeholder="Enter event venue" value="{{old('venue')}}">
+                                        <label for="exampleInputEmail1">Email Address</label>
+                                        <input type="emai" class="form-control" name="email"  aria-describedby="emailHelp" placeholder="Enter email address" value="{{old('email')}}">
                                             @error('venue')
                                                 <p class="text-danger text-xs mt-2">{{$message}}</p>
                                             @enderror
                                       </div>
                 
                                       <div class="form-group">
-                                        <label >Event Description</label>
-                                        <input type="text" class="form-control" name="description"  placeholder="Enter event description" value="{{old('description')}}">
+                                        <label >Password</label>
+                                        <input type="password" class="form-control" name="password"  placeholder="Enter password">
                                             @error('description')
                                                 <p class="text-danger text-xs mt-2">{{$message}}</p>
                                             @enderror
                                       </div>
-                
+
                                       <div class="form-group">
-                                        <label for="picture">Event Picture</label>
-                                        <input type="file" class="form-control" name="picture" aria-describedby="emailHelp" placeholder="Select event picture">
-                                            @error('picture')
-                                                <p class="text-danger text-xs mt-2">{{$message}}</p>
-                                            @enderror
+                                        
+                                        <input type="number" class="form-control invisible" name="is_admin" value="1">
                                       </div>
                 
-                                    <button type="submit" class="btn btn-primary mt-3 ">Submit</button>
+                                    <button type="submit" class="btn btn-primary mt-10 ">Submit</button>
                                   </form>
                                 </div>
                             </div>
@@ -86,7 +83,6 @@
                      </div> 
                 </div>
 
-                    {{-- {{ __('You are logged in!') }} --}}
                 </div>
             </div>
         </div>

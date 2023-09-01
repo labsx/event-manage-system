@@ -27,6 +27,8 @@ Route::get('/event/list', [EventController::class, 'show'])->middleware('is_admi
 Route::get('/edit/{post}', [EventController::class, 'edit'])->middleware('is_admin');
 Route::put('/edit/{post}', [EventController::class, 'update'])->middleware('is_admin');
 Route::delete('/delete/{post}/data', [EventController::class, 'delete'])->middleware('is_admin');
+Route::get('/add/user', [EventController::class, 'userShow'])->middleware('is_admin');
+Route::post('/add/user', [EventController::class, 'userAdd'])->middleware('is_admin');
 
 Route::get('/participant', [ParticipantController::class, 'view'])->middleware('auth');
 Route::post('/participant', [ParticipantController::class, 'add'])->middleware('auth');

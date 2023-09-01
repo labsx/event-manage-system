@@ -17,29 +17,9 @@
                     <div id="wrapper">
                         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
                                
-                            <li class="nav-item">
-                                    <a class="nav-link collapsed" href="/admin/home" data-toggle="collapse" data-target="#collapseTwo"
-                                        aria-expanded="true" aria-controls="collapseTwo">
-                                        <span>EVENT DATA</span>
-                                    </a>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">    
-                             </li>  
-                             <li class="nav-item">
-                                <a class="nav-link collapsed" href="/event/list" data-toggle="collapse" data-target="#collapseTwo"
-                                    aria-expanded="true" aria-controls="collapseTwo">
-                                    <span>ADD EVENT</span>
-                                </a>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">    
-                             </li>
-                
-                             <li class="nav-item">
-                                <a class="nav-link collapsed" href="/participant/list" data-toggle="collapse" data-target="#collapseTwo"
-                                    aria-expanded="true" aria-controls="collapseTwo">
-                                    <span>PARTICIPANT LIST</span>
-                                </a>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">    
-                             </li>
-                           </ul>
+                            <x-nav-link/>
+                           
+                        </ul>
                         
                            <div id="content-wrapper" class="d-flex flex-column mt-4">
                             <div id="content">
