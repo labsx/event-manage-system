@@ -18,20 +18,19 @@ use App\Models\Participant;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
-Route::get('/', [EventController::class, 'welcome']);
-Route::post('/create/event', [EventController::class, 'store']);
-Route::get('/event/list', [EventController::class, 'show']);
-Route::get('/edit/{post}', [EventController::class, 'edit']);
-Route::put('/edit/{post}', [EventController::class, 'update']);
-Route::delete('/delete/{post}/data', [EventController::class, 'delete']);
+Route::get('/', [EventController::class, 'welcome'])->middleware('guest');
+Route::post('/create/event', [EventController::class, 'store'])->middleware('is_admin');
+Route::get('/event/list', [EventController::class, 'show'])->middleware('is_admin');
+Route::get('/edit/{post}', [EventController::class, 'edit'])->middleware('is_admin');
+Route::put('/edit/{post}', [EventController::class, 'update'])->middleware('is_admin');
+Route::delete('/delete/{post}/data', [EventController::class, 'delete'])->middleware('is_admin');
 
-Route::get('/participant', [ParticipantController::class, 'view']);
-// Route::put('/participant', [ParticipantController::class, 'add']);
-Route::post('/participant', [ParticipantController::class, 'add']);
-Route::get('/participant/list', [ParticipantController::class, 'list']);
-Route::delete('/destroy/{post}', [ParticipantController::class, 'delete']);
-Route::delete('/cancel/{post}', [ParticipantController::class, 'cancel']);
-Route::get('/event/registered', [ParticipantController::class, 'event']);
+Route::get('/participant', [ParticipantController::class, 'view'])->middleware('auth');
+Route::post('/participant', [ParticipantController::class, 'add'])->middleware('auth');
+Route::get('/participant/list', [ParticipantController::class, 'list'])->middleware('auth');
+Route::delete('/destroy/{post}', [ParticipantController::class, 'delete'])->middleware('auth');
+Route::delete('/cancel/{post}', [ParticipantController::class, 'cancel'])->middleware('auth');
+Route::get('/event/registered', [ParticipantController::class, 'event'])->middleware('auth');

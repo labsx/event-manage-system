@@ -50,7 +50,7 @@ class ParticipantController extends Controller
 
         Participant::create($validatedData);
     
-       return back()->with('message', 'Event registration successfully');
+        return back()->with('message', 'Event registration successfully');
     }
 
     public function list()
