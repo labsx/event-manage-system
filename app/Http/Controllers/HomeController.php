@@ -22,15 +22,5 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home', [
-            'posts' => Event::latest()->filter(request([ 'search']))->paginate(3)
-        ]);
-    }
-
-    public function adminHome()
-    {
-        return view('admin');
-    }
+    
 }

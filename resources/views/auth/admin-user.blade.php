@@ -21,9 +21,7 @@
                                     <i class="fas fa-laugh-wink"></i>
                                 </div>
                             </a>
-
                                <x-nav-link/>
-                               
                         </ul>
                         
                                   

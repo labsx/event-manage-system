@@ -12,6 +12,13 @@ use App\Rules\UniqueIdEventCombination;
 
 class ParticipantController extends Controller
 {
+    public function index()
+    {
+        return view('home', [
+            'posts' => Event::latest()->filter(request([ 'search']))->paginate(3)
+        ]);
+    }
+
     public function view()
     {
         $events = Event::all();
