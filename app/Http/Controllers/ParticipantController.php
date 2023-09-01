@@ -8,6 +8,7 @@ use App\Models\Participant;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use App\Rules\UniqueIdEventCombination;
 
 class ParticipantController extends Controller
 {
@@ -21,28 +22,36 @@ class ParticipantController extends Controller
 
     public function add(Request $request)
     {
-        $maxUsers = 3;
-        $this->validate($request, [
-            'email' => ['required','email',
-            
-        Rule::unique('participants'),
-            function ($attribute, $value, $fail) use ($maxUsers) {
-                if (Participant::count() >= $maxUsers) {
-                    $fail("Participant reached the limit.");
-                }
-                },
-            ],
-        ]);
- 
-        Participant::create([
-            'user_id' => $request->input('id'),
-            'email' => $request->input('email'),
-            'name' => $request->input('name'),
-            'event' => $request->input('event')
+        
+        $validatedData = $request->validate([
+            'user_id' => ['required', 'integer'],
+            'event' => ['required', 'string'],
+            'email' => ['required', 'email'],
+            'name' => ['required', 'string'],
         ]);
     
-        return back()->with('message', 'Participant registration success!.');
-    }   
+        $id = $validatedData['user_id'];
+        $event = $validatedData['event'];
+    
+        $existingParticipant = Participant::where('user_id', $id)
+                                          ->where('event', $event)
+                                          ->first();
+    
+        if ($existingParticipant) {
+            return back()->with('message', 'You are already registered to this event!');
+        }
+    
+        $maxParticipants = 2; 
+        $currentParticipants = Participant::where('event', $event)->count();
+    
+        if ($currentParticipants >= $maxParticipants) {
+            return back()->with('message', 'Participants limit reach !.');
+        }
+
+        Participant::create($validatedData);
+    
+       return back()->with('message', 'Event registration successfully');
+    }
 
     public function list()
     {

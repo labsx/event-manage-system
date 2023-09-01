@@ -27,12 +27,12 @@
                                         <div class="entry-content mt-1">
                                             <form action="/participant" method="POST">
                                                 @csrf
-                                                @method ('PUT')
+                                                {{-- @method ('PUT') --}}
 
                                                 <div class="form-group">
                                                     <label class="">id</label>
                                                    
-                                                    <input type="text" class="form-control" name="id" placeholder="Full Name" value="{{ Auth::user()->id }}" readonly>
+                                                    <input type="text" class="form-control" name="user_id" placeholder="Full Name" value="{{ Auth::user()->id }}" readonly>
                                                         @error('id')
                                                             <p class="text-danger text-xs mt-2">{{$message}}</p>
                                                         @enderror

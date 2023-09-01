@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('user_id')->constrained()
                 ->onDelete('cascade');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('event');
             // $table->integer('count')->default(2);
             $table->timestamps();
