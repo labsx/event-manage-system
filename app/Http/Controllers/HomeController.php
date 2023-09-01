@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('home', [
-            'posts' => Event::latest()->filter(request([ 'search']))->paginate(6)
+            'posts' => Event::latest()->filter(request([ 'search']))->paginate(3)
         ]);
     }
 

@@ -56,7 +56,7 @@ class ParticipantController extends Controller
     public function list()
     {
         return view('participants.participants-list', [
-            'posts' => Participant::latest()->filter(request([ 'search']))->paginate(6)
+            'posts' => Participant::latest()->filter(request([ 'search']))->paginate(4)
         ]);
     }
 

@@ -12,8 +12,8 @@
                         </div>
                     @endif
 
-                    <div>
-                        <a href="/home">Back</a>
+                    <div class="float-right">
+                        <a href="/home" class="mr-3">Back</a>
                         <a href="/event/registered" >event list</a>
                     </div>
                      <div class="homepage-info-section mt-5">
@@ -27,12 +27,9 @@
                                         <div class="entry-content mt-1">
                                             <form action="/participant" method="POST">
                                                 @csrf
-                                                {{-- @method ('PUT') --}}
 
                                                 <div class="form-group">
-                                                    <label class="">id</label>
-                                                   
-                                                    <input type="text" class="form-control" name="user_id" placeholder="Full Name" value="{{ Auth::user()->id }}" readonly>
+                                                    <input type="text" class="form-control invisible" name="user_id" placeholder="Full Name" value="{{ Auth::user()->id }}" readonly>
                                                         @error('id')
                                                             <p class="text-danger text-xs mt-2">{{$message}}</p>
                                                         @enderror
@@ -53,14 +50,14 @@
                                                         @enderror
                                                 </div>
 
-                                                <label class="mt-2">Event</label>
+                                                <label class="mt-2">Select Event</label>
                                                     <select class="form-control" type="event"  name="event" >
                                                             @foreach ($events as $event)      
                                                                 <option value="{{$event->name}}">{{$event->name }}</option>
                                                             @endforeach
                                                     </select>
                                                     <footer class="entry-footer">
-                                                        <button type="submit" class="btn gradient-bg mt-4">Register Now</button>
+                                                        <button type="submit" class="btn btn-outline-primary mt-4">Register Now</button>
                                                     </footer>
                                                 </div>
                                             </form>

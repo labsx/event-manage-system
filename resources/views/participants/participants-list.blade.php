@@ -80,8 +80,8 @@
                                                 @endforeach
                                             </tbody>
                                       </table>
-                            </div> 
-                    
+                            </div class="mt-4"> 
+                            {{ $posts->links() }}
                 </div>
             </div>
         </div>

@@ -11,16 +11,20 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
                         <div>
                             <a href="/participant">Back</a>
                         </div>
-                        <table class="table">
-                           
+                        <div>
+                            <h3 class="text-center mb-3">Event Registered</h3>
+                        </div>
+
+                        <table class="table ">
                             <thead>
                                 <tr>
                                     <th scope="col">Name</th>
-                                        <th scope="col">Event Registered</th>
-                                        <th scope="col">Manage</th>
+                                    <th scope="col">Event Registered</th>
+                                    <th scope="col">Manage</th>
                                 </tr>
                             </thead>
                                     <tbody>
@@ -37,19 +41,16 @@
                                                     </form>
                                                 </td>
                                             </tr>
-                                            @endforeach
-                                            @else
+                                        @endforeach
+                                        @else
                                             <tr>
                                                 <td>
                                                     <p>No event register!.</p>
                                                 </td>
                                             </tr>
-                                            @endunless
+                                        @endunless
                                     </tbody>           
-                         </table> 
-                                    </div>
-                                </div>
-                            </div>
+                        </table> 
                     </div>
                 </div>
             </div>

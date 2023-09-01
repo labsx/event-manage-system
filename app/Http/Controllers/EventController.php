@@ -11,7 +11,7 @@ class EventController extends Controller
     public function welcome()
     {
         return view('dashboard', [
-            'posts' => Event::latest()->filter(request([ 'search']))->paginate(6)
+            'posts' => Event::latest()->filter(request([ 'search']))->paginate(4)
         ]);
     }
     
