@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ParticipantController;
@@ -22,7 +23,8 @@ Auth::routes();
 
 
 
-Route::get('/', [EventController::class, 'welcome'])->middleware('guest');
+Route::get('/', [DashboardController::class, 'welcome'])->middleware('guest');
+Route::get('/dashboard/{post}', [DashboardController::class, 'eventData']);
 Route::middleware(['middleware' => 'is_admin'])->group(function(){
     Route::get('/admin/home', [EventController::class, 'index'])->name('admin.home');
     Route::post('/event', [EventController::class, 'store']);

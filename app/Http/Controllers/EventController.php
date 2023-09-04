@@ -14,23 +14,6 @@ class EventController extends Controller
         return view('admin');
     }
      
-    public function welcome(Request $request)
-    {    
-        $query = $request->input('search');
-        
-        $queryBuilder = Event::query();
-
-        if ($query) {
-            $queryBuilder->where('name', 'like', '%' . $query . '%')
-                ->orWhere('venue', 'like','%'. request('search'). '%')
-                ->orWhere('description', 'like','%'. request('search'). '%');
-        }
-
-        $posts = $queryBuilder->paginate(4);
-
-        return view('dashboard', compact('posts'));
-    }
-    
     public function store(Request $request)
     {
         $formFields = $request->validate([
