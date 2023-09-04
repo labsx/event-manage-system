@@ -45,8 +45,8 @@
                                                         <td>{{ $post->venue }}</td>
                                                         <td>{{ $post->description }} </td>
                                                         <td> <a class="btn btn-primary btn-sm mt-0" 
-                                                            href="/edit/{{$post->id}}" role="button">Edit</a>
-                                                            <form action="/delete/{{$post->id}}/data" method="POST" class="mt-1">
+                                                            href="/event/{{$post->id}}" role="button">Edit</a>
+                                                            <form action="/event/{{$post->id}}" method="POST" class="mt-1">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" class="btn btn-danger btn-sm mt-0" >Delete</button>

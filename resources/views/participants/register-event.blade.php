@@ -14,7 +14,7 @@
 
                     <div class="float-right">
                         <a href="/home" class="mr-3">Back</a>
-                        <a href="/event/registered" >event list</a>
+                        <a href="/registered" >event list</a>
                     </div>
                      <div class="homepage-info-section mt-5">
                             <div class="container">

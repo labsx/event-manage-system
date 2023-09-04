@@ -51,7 +51,7 @@
                                     <h2 class="text-2xl font-bold uppercase mb-1 mt-4">UPDATE EVENT</h2> 
                                 </header>
                                 
-                                <form action="/edit/{{ $post->id }}" method="POST" enctype="multipart/form-data" class="py-3">
+                                <form action="/event/{{ $post->id }}" method="POST" enctype="multipart/form-data" class="py-3">
                                     @csrf
                                     @method ('PUT')
                 

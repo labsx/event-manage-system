@@ -30,7 +30,7 @@
                                     <h2 class="text-2xl font-bold uppercase mb-1 mt-4">ADD USER</h2> 
                                 </header>
                                 
-                                <form action="/add/user" method="POST" class="py-4">
+                                <form action="/user" method="POST" class="py-4">
                                     @csrf
                                     <div class="form-group">
                                       <label >Event Name</label>

@@ -34,7 +34,7 @@
                                                 <td>{{$post->name}}</td>
                                                 <td>{{$post->event}}</td>
                                                 <td>
-                                                    <form action="/cancel/{{$post->id}}" method="POST" class="mt-1">
+                                                    <form action="/participant/{{$post->id}}" method="POST" class="mt-1">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm mt-0" >Cancel</button>

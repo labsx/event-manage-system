@@ -32,7 +32,7 @@
                                     <h2 class="text-2xl font-bold uppercase mb-1 mt-4">CREATE EVENT</h2> 
                                 </header>
                                 
-                                <form action="/create/event" method="POST" enctype="multipart/form-data" class="py-4">
+                                <form action="/event" method="POST" enctype="multipart/form-data" class="py-4">
                                     @csrf
                                     <div class="form-group">
                                       <label >Event Name</label>

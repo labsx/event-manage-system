@@ -24,14 +24,14 @@ Auth::routes();
 
 Route::get('/', [EventController::class, 'welcome'])->middleware('guest');
 Route::middleware(['middleware' => 'is_admin'])->group(function(){
-    Route::get('/admin/home', [EventController::class, 'adminHome'])->name('admin.home');
-    Route::post('/create/event', [EventController::class, 'store']);
-    Route::get('/event/list', [EventController::class, 'show']);
-    Route::get('/edit/{post}', [EventController::class, 'edit']);
-    Route::put('/edit/{post}', [EventController::class, 'update']);
-    Route::delete('/delete/{post}/data', [EventController::class, 'delete']);
-    Route::get('/add/user', [UserController::class, 'userShow']);
-    Route::post('/add/user', [UserController::class, 'userAdd']);
+    Route::get('/admin/home', [EventController::class, 'index'])->name('admin.home');
+    Route::post('/event', [EventController::class, 'store']);
+    Route::get('/event', [EventController::class, 'show']);
+    Route::get('/event/{post}', [EventController::class, 'edit']);
+    Route::put('/event/{post}', [EventController::class, 'update']);
+    Route::delete('/event/{post}', [EventController::class, 'delete']);
+    Route::get('/user', [UserController::class, 'show']);
+    Route::post('/user', [UserController::class, 'create']);
 });
 Route::middleware(['middleware' => 'auth'])->group(function(){
     Route::get('/home', [ParticipantController::class, 'index'])->name('home');
@@ -39,6 +39,6 @@ Route::middleware(['middleware' => 'auth'])->group(function(){
     Route::post('/participant', [ParticipantController::class, 'add']);
     Route::get('/participant/list', [ParticipantController::class, 'list']);
     Route::delete('/destroy/{post}', [ParticipantController::class, 'delete']);
-    Route::delete('/cancel/{post}', [ParticipantController::class, 'cancel']);
-    Route::get('/event/registered', [ParticipantController::class, 'event']);
+    Route::delete('/participant/{post}', [ParticipantController::class, 'cancel']);
+    Route::get('/registered', [ParticipantController::class, 'event']);
 });

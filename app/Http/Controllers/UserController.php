@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    public function userShow()
+    public function show()
     {
         return view ('auth.admin-user');
     }
 
-    public function userAdd(Request $request)
+    public function create(Request $request)
     {
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
@@ -22,7 +23,7 @@ class UserController extends Controller
             'is_admin' => ['required'],
         ]);
 
-        $formFields['password'] = bcrypt($formFields['password']);
+        $formFields['password'] = Hash::make($formFields['password']);
         
         User::create($formFields);
 

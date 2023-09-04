@@ -39,7 +39,6 @@ class ParticipantController extends Controller
 
     public function add(Request $request)
     {
-        
         $validatedData = $request->validate([
             'user_id' => ['required', 'integer'],
             'event' => ['required', 'string'],
@@ -89,15 +88,13 @@ class ParticipantController extends Controller
 
     public function delete(Participant $post)
     {
-            $post->delete();
-            
+            $post->delete();   
             return back()->with('message', 'Deleted Successfully');
     }
 
     public function cancel(Participant $post)
     {
-            $post->delete();
-            
+            $post->delete();  
             return back()->with('message', 'Cancel Successfully');
     }
 

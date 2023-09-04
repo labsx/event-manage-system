@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 
 class EventController extends Controller
 {
-    public function adminHome()
+    public function index()
     {
         return view('admin');
     }
@@ -29,20 +29,14 @@ class EventController extends Controller
         $posts = $queryBuilder->paginate(4);
 
         return view('dashboard', compact('posts'));
-    
-        // return view('dashboard', [
-        //     'posts' => Event::latest()
-        //     ->where('name', $request->get('search'))
-        //     ->paginate(4)
-        // ]); 
     }
     
     public function store(Request $request)
     {
         $formFields = $request->validate([
             'name' => ['required', Rule::unique('events', 'name')],
-            'venue' => 'required',
-            'description' => 'required', 
+            'venue' => ['required', 'max:255', 'min:8'],
+            'description' => ['required','min:10', 'max:255'], 
         ]);
 
         if($request->hasFile('picture')){
@@ -76,7 +70,6 @@ class EventController extends Controller
             'name' => 'required', 
             'venue' => 'required',
             'description' => 'required',
-           
         ]);
 
         if($request->hasFile('picture')){
@@ -93,7 +86,6 @@ class EventController extends Controller
     public function delete(Event $post)
     {
         $post->delete();
-        
         return back()->with('message', 'Deleted Successfully');
     }
 }
