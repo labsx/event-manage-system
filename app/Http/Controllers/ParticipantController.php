@@ -33,9 +33,9 @@ class ParticipantController extends Controller
     {
         $validatedData = $request->validate([
             'user_id' => ['required', 'integer'],
-            'event' => ['required', 'string', 'max:50', 'min:8'],
+            'event' => ['required', 'string',],
             'email' => ['required', 'email'],
-            'name' => ['required', 'string', 'max:30', 'min:4'],
+            'name' => ['required', 'string',],
         ]);
     
         $id = $validatedData['user_id'];

@@ -34,7 +34,7 @@ Route::middleware(['middleware' => 'is_admin'])->group(function(){
     Route::post('/user', [UserController::class, 'create']);
 });
 Route::middleware(['middleware' => 'auth'])->group(function(){
-    Route::get('/paricipant', [ParticipantController::class, 'index'])->name('home');
+    Route::get('/home', [ParticipantController::class, 'index'])->name('home');
     Route::get('/participant', [ParticipantController::class, 'view']);
     Route::post('/participant', [ParticipantController::class, 'add']);
     Route::get('/participant/list', [ParticipantController::class, 'list']);
