@@ -62,7 +62,6 @@ class EventController extends Controller
     public function edit($id)
     {
         $data = Event::findOrFail($id);
-
         return view('edit-event',['post' => $data]);
     }
 

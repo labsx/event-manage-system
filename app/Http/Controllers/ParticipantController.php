@@ -89,13 +89,4 @@ class ParticipantController extends Controller
             $post->delete();  
             return back()->with('message', 'Cancel Successfully');
     }
-
-    public function event()
-    {
-        $user = Auth::user();
-        $posts = $user->posts;
-
-        return view('participant-event-registration', ['posts' => $posts]);
-    }
-
 }

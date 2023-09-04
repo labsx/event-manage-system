@@ -12,9 +12,8 @@
                         </div>
                     @endif
 
-                    <div class="float-right">
+                    <div class="">
                         <a href="/home" class="mr-3">Back</a>
-                        <a href="/registered" >event list</a>
                     </div>
                      <div class="homepage-info-section mt-5">
                             <div class="container">
@@ -66,7 +65,7 @@
                                                 @if (session()->has('message'))
                                                     <div x-data="{show: true}" x-init ="setTimeout(()=> show = false, 3000)"
                                                         x-show="show" class="mt-3 ">
-                                                            <div class="alert alert-success col-2 " role="alert">
+                                                            <div class="alert alert-success col-7 " role="alert">
                                                                 {{session('message')}}
                                                             </div>
                                                     </div>

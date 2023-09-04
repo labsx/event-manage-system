@@ -50,6 +50,7 @@
                                             </p>
                                             <p class="mt-1 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                                                Date:  {{\Carbon\Carbon::parse($post->date)->format('d/m/Y') }}
+                                               {{-- {{ \Carbon\Carbon::parse($post->date)->diffForHumans() }} --}}
                                             </p>
                                 </div>
                             </div>

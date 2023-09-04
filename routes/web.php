@@ -40,5 +40,4 @@ Route::middleware(['middleware' => 'auth'])->group(function(){
     Route::get('/participant/list', [ParticipantController::class, 'list']);
     Route::delete('/destroy/{post}', [ParticipantController::class, 'delete']);
     Route::delete('/participant/{post}', [ParticipantController::class, 'cancel']);
-    Route::get('/registered', [ParticipantController::class, 'event']);
 });
