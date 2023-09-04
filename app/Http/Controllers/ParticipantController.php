@@ -16,8 +16,9 @@ class ParticipantController extends Controller
     {
         $user = Auth::user();
         $posts = $user->posts;
+        $events = Event::all();
 
-        return view('home', ['posts' => $posts]);
+        return view('home', ['posts' => $posts], ['events' => $events]);
     }
 
     public function view()
