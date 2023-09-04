@@ -51,9 +51,9 @@ class EventController extends Controller
     public function update(Request $request, Event $post)
     {
         $formFields = $request->validate([
-            'name' => 'required', 
-            'venue' => 'required',
-            'description' => 'required',
+            'name' => ['required', 'max:50', 'min:8'], 
+            'venue' => ['required', 'max:50', 'min:8'],
+            'description' => ['required','max:255', 'min:8'],
         ]);
 
         if($request->hasFile('picture')){

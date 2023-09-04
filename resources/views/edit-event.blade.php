@@ -15,36 +15,7 @@
                     @endif
                    
                     <div id="wrapper">
-                        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-                            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/create/event">
-                                <div class="sidebar-brand-icon rotate-n-15">
-                                    <i class="fas fa-laugh-wink"></i>
-                                </div>
-    
-                                <li class="nav-item">
-                                        <a class="nav-link collapsed" href="/admin/home" data-toggle="collapse" data-target="#collapseTwo"
-                                            aria-expanded="true" aria-controls="collapseTwo">
-                                            <span>EVENT DATA</span>
-                                        </a>
-                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">    
-                                 </li>  
-                                 <li class="nav-item">
-                                    <a class="nav-link collapsed" href="/create/event" data-toggle="collapse" data-target="#collapseTwo"
-                                        aria-expanded="true" aria-controls="collapseTwo">
-                                        <span>ADD EVENT</span>
-                                    </a>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">    
-                                 </li>
-                
-                                 <li class="nav-item">
-                                    <a class="nav-link collapsed" href="/participant/list" data-toggle="collapse" data-target="#collapseTwo"
-                                        aria-expanded="true" aria-controls="collapseTwo">
-                                        <span>PARTICIPANT LIST</span>
-                                    </a>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">    
-                                 </li>
-                        </ul>
-                        
+                        <x-nav-link/>
                                   
                         <div class= "container bg-gray-50 border border-gray-200 rounded p-6 p-10 max-w-lg mx-auto mt-24" >
                                 <header class="text-center">

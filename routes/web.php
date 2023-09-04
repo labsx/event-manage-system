@@ -19,12 +19,10 @@ use App\Models\Participant;
 */
 
 Auth::routes();
-
-
-
-
-Route::get('/', [DashboardController::class, 'welcome'])->middleware('guest');
-Route::get('/dashboard/{post}', [DashboardController::class, 'eventData']);
+Route::middleware(['middleware' => 'guest'])->group(function(){
+    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/dashboard/{post}', [DashboardController::class, 'eventData']);
+});
 Route::middleware(['middleware' => 'is_admin'])->group(function(){
     Route::get('/admin/home', [EventController::class, 'index'])->name('admin.home');
     Route::post('/event', [EventController::class, 'store']);
@@ -36,7 +34,7 @@ Route::middleware(['middleware' => 'is_admin'])->group(function(){
     Route::post('/user', [UserController::class, 'create']);
 });
 Route::middleware(['middleware' => 'auth'])->group(function(){
-    Route::get('/home', [ParticipantController::class, 'index'])->name('home');
+    Route::get('/paricipant', [ParticipantController::class, 'index'])->name('home');
     Route::get('/participant', [ParticipantController::class, 'view']);
     Route::post('/participant', [ParticipantController::class, 'add']);
     Route::get('/participant/list', [ParticipantController::class, 'list']);
