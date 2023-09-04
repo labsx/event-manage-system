@@ -57,6 +57,14 @@
                                                 <p class="text-danger text-xs mt-2">{{$message}}</p>
                                             @enderror
                                       </div>
+
+                                      <div class="form-group">
+                                        <label >Event Date</label>
+                                        <input type="date" class="form-control" name="date"  placeholder="Enter event description" value="{{old('date')}}">
+                                            @error('date')
+                                                <p class="text-danger text-xs mt-2">{{$message}}</p>
+                                            @enderror
+                                      </div>
                 
                                       <div class="form-group">
                                         <label for="picture">Event Picture</label>

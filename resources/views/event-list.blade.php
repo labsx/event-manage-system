@@ -34,6 +34,7 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Venue</th>
                                             <th scope="col">Description</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Manage</th>
                                           </tr>
                                         </thead>
@@ -44,6 +45,7 @@
                                                         <td>{{ $post->name }}</td>
                                                         <td>{{ $post->venue }}</td>
                                                         <td>{{ $post->description }} </td>
+                                                        <td>{{ $post->date}} </td>
                                                         <td> <a class="btn btn-primary btn-sm mt-0" 
                                                             href="/event/{{$post->id}}" role="button">Edit</a>
                                                             <form action="/event/{{$post->id}}" method="POST" class="mt-1">
