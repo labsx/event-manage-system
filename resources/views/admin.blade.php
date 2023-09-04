@@ -65,6 +65,14 @@
                                                 <p class="text-danger text-xs mt-2">{{$message}}</p>
                                             @enderror
                                       </div>
+
+                                      <div class="form-group">
+                                        <label >participant Limit</label>
+                                        <input type="number" class="form-control" name="number"  placeholder="Enter participant limit" value="{{old('number')}}">
+                                            @error('number')
+                                                <p class="text-danger text-xs mt-2">{{$message}}</p>
+                                            @enderror
+                                      </div>
                 
                                       <div class="form-group">
                                         <label for="picture">Event Picture</label>

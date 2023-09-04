@@ -14,19 +14,10 @@ class ParticipantController extends Controller
 {
     public function index(Request $request)
     {
-        $query = $request->input('search');
-        
-        $queryBuilder = Event::query();
+        $user = Auth::user();
+        $posts = $user->posts;
 
-        if ($query) {
-            $queryBuilder->where('name', 'like', '%' . $query . '%')
-                ->orWhere('venue', 'like','%'. request('search'). '%')
-                ->orWhere('description', 'like','%'. request('search'). '%');
-        }
-
-        $posts = $queryBuilder->paginate(4);
-
-        return view('home', compact('posts'));
+        return view('home', ['posts' => $posts]);
     }
 
     public function view()
@@ -52,12 +43,12 @@ class ParticipantController extends Controller
         $existingParticipant = Participant::where('user_id', $id)
                                           ->where('event', $event)
                                           ->first();
-    
+                                          
         if ($existingParticipant) {
             return back()->with('message', 'You are already registered to this event!');
         }
     
-        $maxParticipants = 2; 
+        $maxParticipants = Event::max('number');
         $currentParticipants = Participant::where('event', $event)->count();
     
         if ($currentParticipants >= $maxParticipants) {

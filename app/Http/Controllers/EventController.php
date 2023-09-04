@@ -38,6 +38,7 @@ class EventController extends Controller
             'venue' => ['required', 'max:255', 'min:8'],
             'description' => ['required','min:10', 'max:255'], 
             'date' => 'required', 
+            'number' => 'required', 
         ]);
 
         if($request->hasFile('picture')){

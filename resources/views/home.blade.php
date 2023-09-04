@@ -25,6 +25,8 @@
                                             </form>
                                     </div>
                                 </div>
+
+
           
                             <div class="mt-5">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 ">
@@ -35,9 +37,9 @@
                                                 <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
                                                     <img src="{{ asset('storage/' . $post->picture) }}" style="height:100px"/>
                                                 </div>
-                                                    <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{$post->name}}</h2>
+                                                    <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{$post->event}}</h2>
                                                         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                                            {{ $post->venue }}
+                                                            {{-- {{ $post->venue }} --}}
                                                         </p>
 
                                                         <p class="mt-1 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
@@ -55,9 +57,9 @@
                                 </div>
                             </div>
                    
-                            <div class="mt-4 float-right">
+                            {{-- <div class="mt-4 float-right">
                                 {{ $posts->links() }}
-                            </div>
+                            </div> --}}
                             </div>
                         </div>    
                 </div>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('venue');
             $table->longText('description');
             $table->date('date');
+            $table->integer('number');
             $table->string('picture')->nullable();
             $table->timestamps();
         });

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('event');
+            // $table->integer('max');
             // $table->integer('count')->default(2);
             $table->timestamps();
      
