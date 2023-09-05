@@ -12,6 +12,14 @@
                         </div>
                     @endif
 
+                    @if (session()->has('message'))
+                    <div x-data="{show: true}" x-init ="setTimeout(() => show = false, 2000)" x-show="show" class="mt-3">
+                        <div class="alert alert-success col-3 text-center " role="alert">
+                            {{ session('message') }}
+                        </div>
+                    </div>
+                    @endif
+
                         <div class="max-w-7xl mx-auto p-6 lg:p-8">
                             <div class="">
                                 <a href="/participant" class="float-right">Register to event</a>

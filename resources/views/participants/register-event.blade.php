@@ -62,13 +62,14 @@
                                             </form>
 
                                             <div class=" ">
-                                                @if (session()->has('message'))
-                                                    <div x-data="{show: true}" x-init ="setTimeout(()=> show = false, 3000)"
-                                                        x-show="show" class="mt-3 ">
-                                                            <div class="alert alert-success col-7 " role="alert">
-                                                                {{session('message')}}
-                                                            </div>
+                                               
+                                                @if (session()->has('error'))
+                                                    <div x-data="{show: true}" x-init ="setTimeout(() => show = false, 2000)" x-show="show" class="mt-3">
+                                                        <div class="alert alert-danger col-7" role="alert">
+                                                            {{ session('error') }}
+                                                        </div>
                                                     </div>
+                                               
                                                 @endif
                                                 </div>
                                             </div>  

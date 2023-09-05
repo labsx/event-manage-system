@@ -46,19 +46,19 @@ class ParticipantController extends Controller
                                           ->first();
                                           
         if ($existingParticipant) {
-            return back()->with('message', 'You are already registered to this event!');
+            return back()->with('error', 'You are already registered to this event!');
         }
     
         $maxParticipants = Event::max('number');
         $currentParticipants = Participant::where('event', $event)->count();
     
         if ($currentParticipants >= $maxParticipants) {
-            return back()->with('message', 'Participants limit reach !.');
+            return back()->with('error', 'Participants limit reach !.');
         }
 
         Participant::create($validatedData);
     
-        return back()->with('message', 'Event registration successfully');
+        return redirect('home')->with('message', 'Event registration successfully');
     }
 
     public function list(Request $request)
